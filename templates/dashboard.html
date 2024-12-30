@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖Año 2025, Buenas vibras 💖</title>
+    <link rel="stylesheet" href="/static/dasboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <!-- 🌟 Fondo con partículas animadas -->
+    <div id="particle-container"></div>
+
+    <!-- ✨ Animaciones en los Costados -->
+    <div class="side-animation left-animation"></div>
+    <div class="side-animation right-animation"></div>
+
+    <!-- 🎵 Música de fondo -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="/static/humbe.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- 💌 Carta Especial -->
+    <section class="section glow">
+        <h2>💌 Atte: HANS & MELENDEZ 💌</h2>
+        <p>💖🌹Nos vemos para el año 2025, éxitos y abrazos...💖🌹</p>
+        
+        <div class="card hidden" id="loveCard">
+            <img src="/static/carta.gif" alt="Carta GIF" class="gif-card">
+            <div id="gifContainer" class="hidden">
+                <img src="/static/beso_1.gif" alt="Beso" class="gif">
+                <img src="/static/flores.gif" alt="Flores" class="gif">
+            </div>
+            <p id="loveText" class="hidden">"Este 2025 es un nuevo comienzo lleno de posibilidades. Que sea un año de crecimiento, sueños cumplidos y momentos inolvidables. ¡Vamos con todo!" 💖🌹</p>
+        </div>
+        <!-- ❤️ Corazones flotantes alrededor del cuadro -->
+        <div id="heart-animation"></div>
+    </section>
+
+    <!-- ❤️ Botón de Cerrar -->
+    <footer>
+        <button onclick="window.location.href='/login'">Cerrar Sesión</button>
+    </footer>
+    <footer style="text-align: center; margin: 30px; font-size: 0.9rem; color: #666;">
+        💻 Desarrollado con amor ❤️ | © 2024
+    </footer>
+
+    <!-- 📜 Scripts -->
+    <script>
+        // 🎵 Música de Fondo
+        const bgMusic = document.getElementById('bgMusic');
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                document.getElementById('toggleMusic').innerText = '🎼 Pausar Música';
+            } else {
+                bgMusic.pause();
+                document.getElementById('toggleMusic').innerText = '🎼 Reproducir Música';
+            }
+        }
+
+        // 💌 Mostrar Carta Especial
+        function showLoveCard() {
+            const loveCard = document.getElementById('loveCard');
+            const gifContainer = document.getElementById('gifContainer');
+            const loveText = document.getElementById('loveText');
+
+            loveCard.classList.remove('hidden');
+            gsap.from("#loveCard", { scale: 0.8, opacity: 0, duration: 1 });
+
+            setTimeout(() => {
+                gifContainer.classList.remove('hidden');
+                gsap.from("#gifContainer img", {
+                    scale: 0.5,
+                    opacity: 0,
+                    duration: 1,
+                    stagger: 0.5
+                });
+            }, 1000);
+
+            setTimeout(() => {
+                loveText.classList.remove('hidden');
+                gsap.from("#loveText", { y: 30, opacity: 0, duration: 1 });
+            }, 2000);
+        }
+
+        // 🌟 Efecto de Partículas
+        const particleContainer = document.getElementById('particle-container');
+        for (let i = 0; i < 100; i++) {
+            let particle = document.createElement('div');
+            particle.classList.add('particle');
+            particleContainer.appendChild(particle);
+        }
+
+        // 💖 Corazones Alrededor del Cuadro
+        const heartAnimation = document.getElementById('heart-animation');
+        for (let i = 0; i < 20; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            heartAnimation.appendChild(heart);
+        }
+    </script>
+    <footer style="text-align: center; margin: 30px; font-size: 0.9rem; color: #666;">
+        💻 Desarrollado con amor ❤️ | © 2024
+    </footer>
+
+</body>
+</html>
+
+
+
